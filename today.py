@@ -2,7 +2,11 @@
 from __future__ import annotations
 
 import datetime
+import time
 import xml.etree.ElementTree as ET
+from typing import Any
+
+import requests
 
 USERNAME: str = "davassi"
 START_DATE: datetime.date = datetime.date(2011, 1, 1)
@@ -81,3 +85,31 @@ def overwrite_svg(path: str, replacements: dict[str, str], ascii_lines: list[str
 	for element_id, value in replacements.items():
 		find_and_replace(root, element_id, value)
 	tree.write(path, encoding="utf-8", xml_declaration=True)
+
+
+def graphql(query: str, variables: dict[str, Any], token: str) -> dict[str, Any]:
+	"""POST a GraphQL query, retrying transient failures. Returns the data object."""
+	headers = {"Authorization": f"Bearer {token}"}
+	last_error: Exception | None = None
+	for attempt in range(1, MAX_RETRIES + 1):
+		try:
+			resp = requests.post(
+				API_URL,
+				json={"query": query, "variables": variables},
+				headers=headers,
+				timeout=REQUEST_TIMEOUT,
+			)
+			if resp.status_code >= 500:
+				raise requests.HTTPError(f"server error {resp.status_code}")
+			resp.raise_for_status()
+			payload = resp.json()
+			if payload.get("errors"):
+				raise RuntimeError(f"GraphQL errors: {payload['errors']}")
+			return payload["data"]
+		except (requests.RequestException, RuntimeError) as exc:
+			last_error = exc
+			is_graphql_error = isinstance(exc, RuntimeError) and "GraphQL errors" in str(exc)
+			if is_graphql_error or attempt == MAX_RETRIES:
+				break
+			time.sleep(RETRY_BACKOFF_SECONDS * attempt)
+	raise RuntimeError(f"GraphQL request failed: {last_error}")
