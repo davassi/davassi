@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="455" viewBox="0 0 980 455" font-family="'DejaVu Sans Mono','Courier New',monospace">
   <style>
     .bg{fill:#1a1b27}
@@ -6,15 +7,15 @@
     .green{fill:#9ece6a}
     .dim{fill:#565f89}
     text{font-size:13px;dominant-baseline:hanging;white-space:pre}
-    .ascii{font-size:11px;fill:#7aa2f7}
+    .ascii{font-size:7px;fill:#7aa2f7}
     .h{fill:#9ece6a}
   </style>
-  <rect class="bg" x="0" y="0" width="980" height="455" rx="10"/>
-  <text id="ascii" class="ascii" x="24" y="40"><tspan x="24" dy="0">portrait injected at build time</tspan></text>
+  <rect class="bg" x="0" y="0" width="980" height="455" rx="10" />
+  <text id="ascii" class="ascii" x="24" y="40"><tspan x="24" dy="0">                       'xk00OkdllldO0XWWWNNXd.                          </tspan><tspan x="24" dy="1.15em">                      ;dkOOkOkkOKXXXNNNNNWWMWNO:                        </tspan><tspan x="24" dy="1.15em">                    'dx0XXK00OOO000Okxxlllox0XWWNc                      </tspan><tspan x="24" dy="1.15em">                   lO0XNKdlccc:;'..'......'',;lOWWK:                    </tspan><tspan x="24" dy="1.15em">                  ckNK0:..           ......'';cld0NNO.                  </tspan><tspan x="24" dy="1.15em">                 .k0dc.               ......',:codxKKo                  </tspan><tspan x="24" dy="1.15em">                 cdo:..              ......'',;:clok0K                  </tspan><tspan x="24" dy="1.15em">                 c::;.               .......',;;:cdx0X'                 </tspan><tspan x="24" dy="1.15em">                 ;:c:..              .. .....',;;lxxKXl                 </tspan><tspan x="24" dy="1.15em">                .:lo:'...        .........''',,;:lxkONo                 </tspan><tspan x="24" dy="1.15em">                .ook;.... ..',ccc:,,''..,coxO0OxkxkkkXx                 </tspan><tspan x="24" dy="1.15em">               '.odd.....',;c;:ldddo:...lO00OxdxkO0OOKX'                </tspan><tspan x="24" dy="1.15em">              .Oc;cl.....,okd0KOkkoc,. .dOkOkKX0XX0OOON.                </tspan><tspan x="24" dy="1.15em">              .d,'c:.....,;;;:cclc,... .ddolddddkkkdkOK                 </tspan><tspan x="24" dy="1.15em">               ;'ld,'... ............. 'xdo:;;:cclloxOk                 </tspan><tspan x="24" dy="1.15em">                .,''c......  ........  .ldd:;,,,;cldkOd                 </tspan><tspan x="24" dy="1.15em">                ...'k,...........',.....:oxl;,,;:ldkOK:                 </tspan><tspan x="24" dy="1.15em">                  ..k;.......',;:,'cOodd0KOolc:cldkOKo                  </tspan><tspan x="24" dy="1.15em">                    :l'''',,;:::,',:kkk0XW0xdoooxkOO0                   </tspan><tspan x="24" dy="1.15em">                     x;''','',dOxoollodxk0KKXXkcdxO0l                   </tspan><tspan x="24" dy="1.15em">                     .oc;:,'..,;;cccloxkk000koclxO0K                    </tspan><tspan x="24" dy="1.15em">                      .xllc;''......':loloddoloxkKK.                    </tspan><tspan x="24" dy="1.15em">                       ,ddl:,'......';lollododxkKX.                     </tspan><tspan x="24" dy="1.15em">                       .,:o:;'.........,:clooxk0Xk                      </tspan><tspan x="24" dy="1.15em">                       ..',cxxo:c;,,;:cdoddx0KKK0K,                     </tspan><tspan x="24" dy="1.15em">                       ;...';lx0k0K0X00XK0XXX0OOOk'lk                   </tspan><tspan x="24" dy="1.15em">                      'o......,cd0XNXXNNNKK0OOOOo',,NN;                 </tspan><tspan x="24" dy="1.15em">                      ,O'......',;:codxxxkkkO0o'.,,:MMMK,               </tspan><tspan x="24" dy="1.15em">                 'd.  ,0c.......';;:cloodxxko...''.KMMMMMK:             </tspan><tspan x="24" dy="1.15em">             .ckKKx    Od;......',,;:clooo;. ...''OMMMMMMMMWKd:.        </tspan><tspan x="24" dy="1.15em">        .:dOXXKKXX. l. :dc;'....'',;;;c,.   .....OWMMMMMMMMWWWWWXx:.    </tspan><tspan x="24" dy="1.15em">   .;oOXXXKKKXXXKd :l,  .::,'..'..','....  .....oWWWWMMMMMWWWWWWWWWWKo, </tspan><tspan x="24" dy="1.15em">x0NXXXXXXNXKXKXKX;.d;'   .;:,..................'WWWWWWWWWWWWWWMWWWWWWWWN</tspan><tspan x="24" dy="1.15em">XXXXXXXXXXXXXKXXX.:,..    ',,...... .  ........KWWWWWWWWWWWMWWWWWWWWWWWW</tspan><tspan x="24" dy="1.15em">XXXXXXXXXXXXXXXN;'..      ''......       ... .xWWWWWWWWWWWWWWWWWWWWWWWWW</tspan><tspan x="24" dy="1.15em">XXXXXXXXXXXXXXNN'.          .......   ...    :WWWWWWWWWWWWWWWWWWWWWWWWWW</tspan><tspan x="24" dy="1.15em">XXXXXXXXXXXXXNWo              ..... ....    .XNWWWWWWWWWWWWWWWWWWWWWWWWW</tspan><tspan x="24" dy="1.15em">XXXNXXNNXXXXXNX                ...  ...     cNNWWWWWWWWWWWWWWMWWWWWWWWWW</tspan></text>
   <text class="fg" x="380" y="34">
     <tspan class="h" x="380" dy="0">gianluigi@davassi</tspan><tspan class="dim"> ---------------------------</tspan>
-    <tspan class="fg" x="380" dy="1.6em">OS: .................. macOS · Linux</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Uptime: .............. </tspan><tspan class="green" id="uptime">...</tspan>
+    <tspan class="fg" x="380" dy="1.6em">OS: .................. Linux</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Uptime: .............. </tspan><tspan class="green" id="uptime">15 years, 6 months, 9 days</tspan>
     <tspan class="fg" x="380" dy="1.4em">Host: ................ Carion Group, CTO &amp; AI Architect</tspan>
     <tspan class="fg" x="380" dy="1.4em">Kernel: .............. Fintech &amp; AI Infrastructure</tspan>
     <tspan class="fg" x="380" dy="1.4em">Editor: .............. IntelliJ IDEA, VS Code, Neovim, Claude Code</tspan>
@@ -24,14 +25,14 @@
     <tspan class="accent" x="380" dy="1.4em">Languages.Real: ......</tspan><tspan class="fg"> Italian (native), English, German, Russian</tspan>
     <tspan class="accent" x="380" dy="1.8em">Domains.Fintech: .....</tspan><tspan class="fg"> Core/Open Banking, Lending, Payments, KYC/AML</tspan>
     <tspan class="accent" x="380" dy="1.4em">Domains.AI: ..........</tspan><tspan class="fg"> Agentic Systems, LLM/GenAI, ML in Production</tspan>
-    <tspan class="accent" x="380" dy="1.4em">Regulatory: .........</tspan><tspan class="fg"> BaFin, Banca d'Italia, CNBV</tspan>
+    <tspan class="accent" x="380" dy="1.4em">Focus: ..............</tspan><tspan class="fg"> Agentic AI, Risk Pricing, AlgoTrading</tspan>
     <tspan class="green" x="380" dy="1.8em">- Contact ----------------------------------</tspan>
     <tspan class="fg" x="380" dy="1.4em">Email: ............... gianluigi.davassi@gmail.com</tspan>
     <tspan class="fg" x="380" dy="1.4em">LinkedIn: ............ in/gianluigidavassi</tspan>
     <tspan class="fg" x="380" dy="1.4em">Location: ............ Dubai, UAE · open to relocation</tspan>
     <tspan class="green" x="380" dy="1.8em">- GitHub Stats -----------------------------</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Repos: </tspan><tspan class="accent" id="repo_data">..</tspan><tspan class="fg"> {Contributed: </tspan><tspan class="accent" id="contrib_data">..</tspan><tspan class="fg">} | Stars: </tspan><tspan class="accent" id="star_data">..</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Commits: </tspan><tspan class="accent" id="commit_data">..</tspan><tspan class="fg"> | Followers: </tspan><tspan class="accent" id="follower_data">..</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_data">..</tspan><tspan class="fg"> added</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Repos: </tspan><tspan class="accent" id="repo_data">43</tspan><tspan class="fg"> {Contributed: </tspan><tspan class="accent" id="contrib_data">25</tspan><tspan class="fg">} | Stars: </tspan><tspan class="accent" id="star_data">96</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Commits: </tspan><tspan class="accent" id="commit_data">2,917</tspan><tspan class="fg"> | Followers: </tspan><tspan class="accent" id="follower_data">39</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_data">1,300,097</tspan><tspan class="fg"> added</tspan>
   </text>
 </svg>
