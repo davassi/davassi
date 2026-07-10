@@ -113,3 +113,64 @@ def graphql(query: str, variables: dict[str, Any], token: str) -> dict[str, Any]
 				break
 			time.sleep(RETRY_BACKOFF_SECONDS * attempt)
 	raise RuntimeError(f"GraphQL request failed: {last_error}")
+
+
+def fetch_account(token: str) -> tuple[str, str]:
+	"""Return (node_id, created_at_iso) for USERNAME."""
+	query = "query($login:String!){ user(login:$login){ id createdAt } }"
+	user = graphql(query, {"login": USERNAME}, token)["user"]
+	return user["id"], user["createdAt"]
+
+
+def fetch_repositories(token: str) -> list[dict[str, Any]]:
+	"""Owner repos (private included, forks excluded), paginated."""
+	query = """
+	query($login:String!,$affs:[RepositoryAffiliation],$cursor:String){
+	  user(login:$login){
+	    repositories(first:100, after:$cursor, ownerAffiliations:$affs,
+	                 orderBy:{field:STARGAZERS, direction:DESC}){
+	      pageInfo{ hasNextPage endCursor }
+	      nodes{
+	        nameWithOwner isFork stargazerCount
+	        defaultBranchRef{ target{ ... on Commit{ oid history{ totalCount } } } }
+	      }
+	    }
+	  }
+	}"""
+	repos: list[dict[str, Any]] = []
+	cursor: str | None = None
+	while True:
+		data = graphql(query, {"login": USERNAME, "affs": OWNER_AFFILIATIONS, "cursor": cursor}, token)
+		conn = data["user"]["repositories"]
+		for node in conn["nodes"]:
+			if node["isFork"]:
+				continue
+			branch = node.get("defaultBranchRef")
+			target = branch["target"] if branch else None
+			repos.append({
+				"name_with_owner": node["nameWithOwner"],
+				"stars": node["stargazerCount"],
+				"default_branch_oid": target["oid"] if target else None,
+				"history_count": target["history"]["totalCount"] if target else 0,
+			})
+		if not conn["pageInfo"]["hasNextPage"]:
+			return repos
+		cursor = conn["pageInfo"]["endCursor"]
+
+
+def fetch_star_total(repos: list[dict[str, Any]]) -> int:
+	return sum(r["stars"] for r in repos)
+
+
+def fetch_contributed_count(token: str) -> int:
+	query = """query($login:String!){
+	  user(login:$login){
+	    repositoriesContributedTo(includeUserRepositories:false,
+	      contributionTypes:[COMMIT,PULL_REQUEST,REPOSITORY]){ totalCount }
+	  }}"""
+	return graphql(query, {"login": USERNAME}, token)["user"]["repositoriesContributedTo"]["totalCount"]
+
+
+def fetch_follower_count(token: str) -> int:
+	query = "query($login:String!){ user(login:$login){ followers{ totalCount } } }"
+	return graphql(query, {"login": USERNAME}, token)["user"]["followers"]["totalCount"]
