@@ -176,22 +176,24 @@ def fetch_follower_count(token: str) -> int:
 	return graphql(query, {"login": USERNAME}, token)["user"]["followers"]["totalCount"]
 
 
-def parse_cache(text: str) -> dict[str, dict[str, int | str]]:
-	cache: dict[str, dict[str, int | str]] = {}
+def parse_cache(text: str) -> dict[str, dict[str, int | str | None]]:
+	cache: dict[str, dict[str, int | str | None]] = {}
 	for line in text.splitlines():
 		if not line.strip():
 			continue
-		name, oid, hist, add, dele, commits = line.split("\t")
+		name, oid_field, hist, add, dele, commits = line.split("\t")
+		oid = None if oid_field == "" else oid_field
 		cache[name] = {"oid": oid, "history_count": int(hist),
 					   "add": int(add), "del": int(dele), "commits": int(commits)}
 	return cache
 
 
-def serialize_cache(cache: dict[str, dict[str, int | str]]) -> str:
+def serialize_cache(cache: dict[str, dict[str, int | str | None]]) -> str:
 	lines = []
 	for name, e in cache.items():
+		oid_field = "" if e["oid"] is None else e["oid"]
 		lines.append("\t".join(str(x) for x in
-						 [name, e["oid"], e["history_count"], e["add"], e["del"], e["commits"]]))
+						 [name, oid_field, e["history_count"], e["add"], e["del"], e["commits"]]))
 	return "\n".join(lines) + ("\n" if lines else "")
 
 
@@ -225,10 +227,11 @@ def count_repo_history(name_with_owner: str, author_id: str, token: str) -> tupl
 
 
 def count_lines(repos: list[dict[str, Any]], author_id: str, token: str,
-				cache: dict[str, dict[str, int | str]]) -> tuple[int, int, int, int, dict]:
+				cache: dict[str, dict[str, int | str | None]]
+				) -> tuple[int, int, int, int, dict[str, dict[str, int | str | None]]]:
 	"""Aggregate LOC add/del/total and commits across repos, reusing the cache."""
 	total_add = total_del = total_commits = 0
-	new_cache: dict[str, dict[str, int | str]] = {}
+	new_cache: dict[str, dict[str, int | str | None]] = {}
 	for repo in repos:
 		name = repo["name_with_owner"]
 		oid = repo["default_branch_oid"]
