@@ -12,7 +12,7 @@ MINI_SVG = textwrap.dedent(
         <tspan id="uptime">.</tspan><tspan id="repo_data">.</tspan>
         <tspan id="contrib_data">.</tspan><tspan id="star_data">.</tspan>
         <tspan id="commit_data">.</tspan><tspan id="follower_data">.</tspan>
-        <tspan id="loc_total">.</tspan><tspan id="loc_add">.</tspan><tspan id="loc_del">.</tspan>
+        <tspan id="loc_data">.</tspan>
       </text>
     </svg>
     """
@@ -48,9 +48,7 @@ def test_main_writes_all_tokens(tmp_path, monkeypatch):
     assert result["contrib_data"] == "133"
     assert result["follower_data"] == "39"
     assert result["commit_data"] == "2,116"
-    assert result["loc_add"] == "523,178"
-    assert result["loc_del"] == "76,902"
-    assert result["loc_total"] == "446,276"
+    assert result["loc_data"] == "523,178"
     assert result["uptime"].endswith("days") and result["uptime"].startswith("15 years")
 
     root = ET.parse(str(svg)).getroot()

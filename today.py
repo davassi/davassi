@@ -257,8 +257,7 @@ def load_portrait(path: str) -> list[str]:
 
 
 def build_replacements(uptime: str, repo_count: int, contrib: int, stars: int,
-					   commits: int, followers: int, loc_add: int, loc_del: int,
-					   loc_total: int) -> dict[str, str]:
+					   commits: int, followers: int, loc_add: int) -> dict[str, str]:
 	return {
 		"uptime": uptime,
 		"repo_data": format_int(repo_count),
@@ -266,9 +265,7 @@ def build_replacements(uptime: str, repo_count: int, contrib: int, stars: int,
 		"star_data": format_int(stars),
 		"commit_data": format_int(commits),
 		"follower_data": format_int(followers),
-		"loc_total": format_int(loc_total),
-		"loc_add": format_int(loc_add),
-		"loc_del": format_int(loc_del),
+		"loc_data": format_int(loc_add),
 	}
 
 
@@ -286,12 +283,12 @@ def main(token: str, today_date: datetime.date, portrait_path: str) -> dict[str,
 	contrib = fetch_contributed_count(token)
 	followers = fetch_follower_count(token)
 	cache = _read_cache_file(CACHE_PATH)
-	loc_add, loc_del, loc_total, commits, new_cache = count_lines(repos, author_id, token, cache)
+	loc_add, _loc_del, _loc_total, commits, new_cache = count_lines(repos, author_id, token, cache)
 
 	replacements = build_replacements(
 		uptime=format_uptime(START_DATE, today_date),
 		repo_count=len(repos), contrib=contrib, stars=stars, commits=commits,
-		followers=followers, loc_add=loc_add, loc_del=loc_del, loc_total=loc_total,
+		followers=followers, loc_add=loc_add,
 	)
 	portrait = load_portrait(portrait_path)
 	for svg_path in SVG_FILES:

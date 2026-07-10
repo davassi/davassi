@@ -27,6 +27,13 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      - name: Restore/save LOC cache
+        uses: actions/cache@v4
+        with:
+          path: assets/loc_cache.txt
+          key: loc-cache-${{ github.run_id }}
+          restore-keys: |
+            loc-cache-
       - name: Generate SVGs
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
@@ -35,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/dark_mode.svg assets/light_mode.svg assets/loc_cache.txt
+          git add assets/dark_mode.svg assets/light_mode.svg
           if git diff --cached --quiet; then
             echo "No changes."
           else

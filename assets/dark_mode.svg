@@ -32,6 +32,6 @@
     <tspan class="green" x="380" dy="1.8em">- GitHub Stats -----------------------------</tspan>
     <tspan class="fg" x="380" dy="1.4em">Repos: </tspan><tspan class="accent" id="repo_data">..</tspan><tspan class="fg"> {Contributed: </tspan><tspan class="accent" id="contrib_data">..</tspan><tspan class="fg">} | Stars: </tspan><tspan class="accent" id="star_data">..</tspan>
     <tspan class="fg" x="380" dy="1.4em">Commits: </tspan><tspan class="accent" id="commit_data">..</tspan><tspan class="fg"> | Followers: </tspan><tspan class="accent" id="follower_data">..</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_total">..</tspan><tspan class="fg"> ( </tspan><tspan class="green" id="loc_add">..</tspan><tspan class="fg">++, </tspan><tspan class="dim" id="loc_del">..</tspan><tspan class="fg">-- )</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_data">..</tspan><tspan class="fg"> added</tspan>
   </text>
 </svg>
