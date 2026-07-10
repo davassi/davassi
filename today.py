@@ -174,3 +174,74 @@ def fetch_contributed_count(token: str) -> int:
 def fetch_follower_count(token: str) -> int:
 	query = "query($login:String!){ user(login:$login){ followers{ totalCount } } }"
 	return graphql(query, {"login": USERNAME}, token)["user"]["followers"]["totalCount"]
+
+
+def parse_cache(text: str) -> dict[str, dict[str, int | str]]:
+	cache: dict[str, dict[str, int | str]] = {}
+	for line in text.splitlines():
+		if not line.strip():
+			continue
+		name, oid, hist, add, dele, commits = line.split("\t")
+		cache[name] = {"oid": oid, "history_count": int(hist),
+					   "add": int(add), "del": int(dele), "commits": int(commits)}
+	return cache
+
+
+def serialize_cache(cache: dict[str, dict[str, int | str]]) -> str:
+	lines = []
+	for name, e in cache.items():
+		lines.append("\t".join(str(x) for x in
+						 [name, e["oid"], e["history_count"], e["add"], e["del"], e["commits"]]))
+	return "\n".join(lines) + ("\n" if lines else "")
+
+
+def count_repo_history(name_with_owner: str, author_id: str, token: str) -> tuple[int, int, int]:
+	"""Sum additions/deletions and count commits authored by author_id in a repo."""
+	owner, name = name_with_owner.split("/", 1)
+	query = """
+	query($owner:String!,$name:String!,$author:ID!,$cursor:String){
+	  repository(owner:$owner,name:$name){
+	    defaultBranchRef{ target{ ... on Commit{
+	      history(first:100, after:$cursor, author:{id:$author}){
+	        pageInfo{ hasNextPage endCursor }
+	        edges{ node{ additions deletions } }
+	      }}}}
+	  }}"""
+	add = dele = commits = 0
+	cursor: str | None = None
+	while True:
+		data = graphql(query, {"owner": owner, "name": name, "author": author_id, "cursor": cursor}, token)
+		branch = data["repository"]["defaultBranchRef"]
+		if not branch:
+			return add, dele, commits
+		history = branch["target"]["history"]
+		for edge in history["edges"]:
+			add += edge["node"]["additions"]
+			dele += edge["node"]["deletions"]
+			commits += 1
+		if not history["pageInfo"]["hasNextPage"]:
+			return add, dele, commits
+		cursor = history["pageInfo"]["endCursor"]
+
+
+def count_lines(repos: list[dict[str, Any]], author_id: str, token: str,
+				cache: dict[str, dict[str, int | str]]) -> tuple[int, int, int, int, dict]:
+	"""Aggregate LOC add/del/total and commits across repos, reusing the cache."""
+	total_add = total_del = total_commits = 0
+	new_cache: dict[str, dict[str, int | str]] = {}
+	for repo in repos:
+		name = repo["name_with_owner"]
+		oid = repo["default_branch_oid"]
+		hist = repo["history_count"]
+		cached = cache.get(name)
+		if cached and cached["oid"] == oid and cached["history_count"] == hist:
+			add, dele, commits = int(cached["add"]), int(cached["del"]), int(cached["commits"])
+		elif oid is None:
+			add = dele = commits = 0
+		else:
+			add, dele, commits = count_repo_history(name, author_id, token)
+		new_cache[name] = {"oid": oid, "history_count": hist, "add": add, "del": dele, "commits": commits}
+		total_add += add
+		total_del += dele
+		total_commits += commits
+	return total_add, total_del, total_add - total_del, total_commits, new_cache
