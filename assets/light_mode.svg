@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="540" viewBox="0 0 840 540" font-family="'DejaVu Sans Mono','Courier New',monospace">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="455" viewBox="0 0 980 455" font-family="'DejaVu Sans Mono','Courier New',monospace">
   <style>
     .bg{fill:#ffffff}
     .fg{fill:#24292f}
@@ -9,7 +9,7 @@
     .ascii{font-size:11px;fill:#0969da}
     .h{fill:#1a7f37}
   </style>
-  <rect class="bg" x="0" y="0" width="840" height="540" rx="10"/>
+  <rect class="bg" x="0" y="0" width="980" height="455" rx="10"/>
   <text id="ascii" class="ascii" x="24" y="40"><tspan x="24" dy="0">portrait injected at build time</tspan></text>
   <text class="fg" x="380" y="34">
     <tspan class="h" x="380" dy="0">gianluigi@davassi</tspan><tspan class="dim"> ---------------------------</tspan>
