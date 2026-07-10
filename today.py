@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime
+import os
 import time
 import xml.etree.ElementTree as ET
 from typing import Any
@@ -248,3 +249,62 @@ def count_lines(repos: list[dict[str, Any]], author_id: str, token: str,
 		total_del += dele
 		total_commits += commits
 	return total_add, total_del, total_add - total_del, total_commits, new_cache
+
+
+def load_portrait(path: str) -> list[str]:
+	with open(path, encoding="utf-8") as fh:
+		return [line.rstrip("\n") for line in fh.read().splitlines()]
+
+
+def build_replacements(uptime: str, repo_count: int, contrib: int, stars: int,
+					   commits: int, followers: int, loc_add: int, loc_del: int,
+					   loc_total: int) -> dict[str, str]:
+	return {
+		"uptime": uptime,
+		"repo_data": format_int(repo_count),
+		"contrib_data": format_int(contrib),
+		"star_data": format_int(stars),
+		"commit_data": format_int(commits),
+		"follower_data": format_int(followers),
+		"loc_total": format_int(loc_total),
+		"loc_add": format_int(loc_add),
+		"loc_del": format_int(loc_del),
+	}
+
+
+def _read_cache_file(path: str) -> dict[str, dict[str, int | str | None]]:
+	if not os.path.exists(path):
+		return {}
+	with open(path, encoding="utf-8") as fh:
+		return parse_cache(fh.read())
+
+
+def main(token: str, today_date: datetime.date, portrait_path: str) -> dict[str, str]:
+	author_id, _created_at = fetch_account(token)
+	repos = fetch_repositories(token)
+	stars = fetch_star_total(repos)
+	contrib = fetch_contributed_count(token)
+	followers = fetch_follower_count(token)
+	cache = _read_cache_file(CACHE_PATH)
+	loc_add, loc_del, loc_total, commits, new_cache = count_lines(repos, author_id, token, cache)
+
+	replacements = build_replacements(
+		uptime=format_uptime(START_DATE, today_date),
+		repo_count=len(repos), contrib=contrib, stars=stars, commits=commits,
+		followers=followers, loc_add=loc_add, loc_del=loc_del, loc_total=loc_total,
+	)
+	portrait = load_portrait(portrait_path)
+	for svg_path in SVG_FILES:
+		overwrite_svg(svg_path, replacements, portrait)
+	with open(CACHE_PATH, "w", encoding="utf-8") as fh:
+		fh.write(serialize_cache(new_cache))
+	return replacements
+
+
+if __name__ == "__main__":
+	access_token = os.environ.get("ACCESS_TOKEN")
+	if not access_token:
+		print("ERROR: ACCESS_TOKEN environment variable is required", flush=True)
+		raise SystemExit(1)
+	applied = main(access_token, datetime.date.today(), "assets/portrait.txt")
+	print("Updated SVGs:", applied, flush=True)
