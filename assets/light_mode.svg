@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="540" viewBox="0 0 840 540" font-family="'DejaVu Sans Mono','Courier New',monospace">
+  <style>
+    .bg{fill:#ffffff}
+    .fg{fill:#24292f}
+    .accent{fill:#0969da}
+    .green{fill:#1a7f37}
+    .dim{fill:#8b949e}
+    text{font-size:13px;dominant-baseline:hanging;white-space:pre}
+    .ascii{font-size:11px;fill:#0969da}
+    .h{fill:#1a7f37}
+  </style>
+  <rect class="bg" x="0" y="0" width="840" height="540" rx="10"/>
+  <text id="ascii" class="ascii" x="24" y="40"><tspan x="24" dy="0">portrait injected at build time</tspan></text>
+  <text class="fg" x="380" y="34">
+    <tspan class="h" x="380" dy="0">gianluigi@davassi</tspan><tspan class="dim"> ---------------------------</tspan>
+    <tspan class="fg" x="380" dy="1.6em">OS: .................. macOS · Linux</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Uptime: .............. </tspan><tspan class="green" id="uptime">...</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Host: ................ Carion Group, CTO &amp; AI Architect</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Kernel: .............. Fintech &amp; AI Infrastructure</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Editor: .............. IntelliJ IDEA, VS Code, Neovim, Claude Code</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Shell: ............... zsh, bash, fish</tspan>
+    <tspan class="accent" x="380" dy="1.8em">Languages.Programming:</tspan><tspan class="fg"> Rust, Go, Java, Python, C++</tspan>
+    <tspan class="accent" x="380" dy="1.4em">Languages.Cloud: .....</tspan><tspan class="fg"> AWS, Kubernetes, Docker, ECS Fargate</tspan>
+    <tspan class="accent" x="380" dy="1.4em">Languages.Real: ......</tspan><tspan class="fg"> Italian (native), English, German, Russian</tspan>
+    <tspan class="accent" x="380" dy="1.8em">Domains.Fintech: .....</tspan><tspan class="fg"> Core/Open Banking, Lending, Payments, KYC/AML</tspan>
+    <tspan class="accent" x="380" dy="1.4em">Domains.AI: ..........</tspan><tspan class="fg"> Agentic Systems, LLM/GenAI, ML in Production</tspan>
+    <tspan class="accent" x="380" dy="1.4em">Regulatory: .........</tspan><tspan class="fg"> BaFin, Banca d'Italia, CNBV</tspan>
+    <tspan class="green" x="380" dy="1.8em">- Contact ----------------------------------</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Email: ............... gianluigi.davassi@gmail.com</tspan>
+    <tspan class="fg" x="380" dy="1.4em">LinkedIn: ............ in/gianluigidavassi</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Location: ............ Dubai, UAE · open to relocation</tspan>
+    <tspan class="green" x="380" dy="1.8em">- GitHub Stats -----------------------------</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Repos: </tspan><tspan class="accent" id="repo_data">..</tspan><tspan class="fg"> {Contributed: </tspan><tspan class="accent" id="contrib_data">..</tspan><tspan class="fg">} | Stars: </tspan><tspan class="accent" id="star_data">..</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Commits: </tspan><tspan class="accent" id="commit_data">..</tspan><tspan class="fg"> | Followers: </tspan><tspan class="accent" id="follower_data">..</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_total">..</tspan><tspan class="fg"> ( </tspan><tspan class="green" id="loc_add">..</tspan><tspan class="fg">++, </tspan><tspan class="dim" id="loc_del">..</tspan><tspan class="fg">-- )</tspan>
+  </text>
+</svg>
