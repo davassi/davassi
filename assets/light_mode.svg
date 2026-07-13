@@ -33,7 +33,7 @@
     <tspan class="accent" x="380" dy="1.4em">Location: ............</tspan><tspan class="fg"> Dubai, UAE · open to relocation</tspan>
     <tspan class="green" x="380" dy="1.8em">- GitHub Stats -----------------------------</tspan>
     <tspan class="fg" x="380" dy="1.4em">Repos: </tspan><tspan class="accent" id="repo_data">44</tspan><tspan class="fg"> {Contributed: </tspan><tspan class="accent" id="contrib_data">25</tspan><tspan class="fg">} | Stars: </tspan><tspan class="accent" id="star_data">96</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Commits: </tspan><tspan class="accent" id="commit_data">3,017</tspan><tspan class="fg"> | Followers: </tspan><tspan class="accent" id="follower_data">39</tspan>
-    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_data">1,309,139</tspan><tspan class="fg"> added</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Commits: </tspan><tspan class="accent" id="commit_data">3,023</tspan><tspan class="fg"> | Followers: </tspan><tspan class="accent" id="follower_data">39</tspan>
+    <tspan class="fg" x="380" dy="1.4em">Lines of Code: </tspan><tspan class="accent" id="loc_data">1,310,086</tspan><tspan class="fg"> added</tspan>
   </text>
 </svg>
