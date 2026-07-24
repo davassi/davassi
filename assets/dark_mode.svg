@@ -15,7 +15,7 @@
   <text class="fg" x="380" y="34">
     <tspan class="h" x="380" dy="0">gianluigi@davassi</tspan><tspan class="dim"> ---------------------------</tspan>
     <tspan class="accent" x="380" dy="1.6em">OS: ..................</tspan><tspan class="fg"> Linux</tspan>
-    <tspan class="accent" x="380" dy="1.4em">Uptime: .............. </tspan><tspan class="green" id="uptime">15 years, 6 months, 22 days</tspan>
+    <tspan class="accent" x="380" dy="1.4em">Uptime: .............. </tspan><tspan class="green" id="uptime">15 years, 6 months, 23 days</tspan>
     <tspan class="accent" x="380" dy="1.4em">Host: ................</tspan><tspan class="fg"> Carion Group, CTO &amp; AI Architect</tspan>
     <tspan class="accent" x="380" dy="1.4em">Kernel: ..............</tspan><tspan class="fg"> Fintech &amp; AI Infrastructure</tspan>
     <tspan class="accent" x="380" dy="1.4em">Editor: ..............</tspan><tspan class="fg"> IntelliJ IDEA, VS Code, Neovim, Claude Code</tspan>
